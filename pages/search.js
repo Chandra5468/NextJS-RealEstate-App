@@ -7,7 +7,7 @@ import SearchFilters from "../components/SearchFilters";
 import Property from "../components/Property";
 import noresult from '../assets/noresult.svg'
 import { fetchApi, baseUrl} from "../utils/fetchApi";
-function search({properties}) {
+function Search({properties}) {
 
     const [searchFilters, setSearchFilters] = useState(false);
     const router = useRouter()
@@ -35,7 +35,7 @@ function search({properties}) {
             {/* this router will display on screen what is mention in url i.e Properties "For sale" if  for sale is clicked in menu button*/}
         </Text>
         <Flex flexWrap={"wrap"}>
-            {properties.map((property)=> <Property property={property} id={property.id}/>)}
+            {properties.map((property)=> <Property property={property} key={property.id}/>)}
         </Flex>
         {properties.length===0 && (
             <Flex justifyContent={"center"} alignItems="center" flexDirection={"column"} marginTop="5" marginBottom={"5"}>
@@ -70,4 +70,4 @@ export async function getServerSideProps({ query }) {
     };
   }
   
-export default search
+export default Search
